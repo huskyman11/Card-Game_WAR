@@ -40,7 +40,7 @@ class Deck {
 //Building the playing deck objects
 
 createDeck() {
-    for (let i = 0; i < this.deck.length; i++) {
+    for (let i = 0; i < this.suits.length; i++) {
         for (let j = 0; j < this.ranks.length; j++) {
             let card = {
                 name: `${this.ranks[j]} of ${this.suits[i]}` ,
@@ -58,8 +58,7 @@ shuffleDeck() {
    
     for (let i = this.deck.length - 1 ; i > 0; i--) {
         let j = Math.floor(Math.random() * (i + 1));
-        [this.deck[i], this.deck[j]] = [this.deck[j], 
-        this.deck[i]];
+        [this.deck[i], this.deck[j]] = [this.deck[j], this.deck[i]];
      }
     }
 
@@ -94,7 +93,7 @@ playGame() {
     //playing the hands and keeping track of the scoring 
     for (let i = 0; i < this.player1.hand.length; i++){
 
-        if (this.player1.hand[i].value > this.player2.hand[i]){
+        if (this.player1.hand[i].value > this.player2.hand[i].value){
             this.player1.score++
             console.log(`
                 P1 Card is: ${this.player1.hand[i].name}
